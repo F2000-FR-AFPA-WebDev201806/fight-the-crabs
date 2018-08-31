@@ -1,16 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome </span></h1>
-
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit">
-                {{ form_end(form) }}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"></div>
+        <div class="col-md-2"></div>
+    </div>
+    <nav>
+        <h1>BIENVENUE CHER GAMER</h1>
+    </nav>
+    <header>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{ asset('bundles/app/images/logopc5.jpg') }}" alt="jeu morpion" title="morpion" />
+            </div>
+            <div class="col-md-8">
+                <h2>Fight-The-Crabs-Game</h2>
+            </div>
+            <div class="col-md-2">
+                <img src="{{ asset('bundles/app/images/jeu_morpion.jpg') }}" alt="jeu morpion" title="morpion" />
             </div>
         </div>
+    </header>
+
+    <div>
+        <img src="{{ asset('bundles/app/images/gamer.jpg') }}" alt="gamer" title="game" />
+        <br>
     </div>
+    <br />
+
+    {% if app.user %}
+        <div>
+            <table border="10">
+                <tr>
+                    <td>image tab[1]</td>
+                    <td>image tab[2]</td>
+                    <td>image tab[3]</td>
+                </tr>
+                <tr>
+                    <td>image tab[4]</td>
+                    <td>image tab[5]</td>
+                    <td>image tab[6]</td>
+                </tr>
+                <tr>
+                    <td>image tab[7]</td>
+                    <td>image tab[8]</td>
+                    <td>image tab[9]</td>
+                </tr>
+            </table>
+        </div>
+    {% else %}
+        <div id="container">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit">
+            {{ form_end(form) }}
+        </div>
+    {% endif %}
+
+    <h2>ENTRER</h2>
 {% endblock %}

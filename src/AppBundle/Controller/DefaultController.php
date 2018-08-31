@@ -12,6 +12,26 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class DefaultController extends Controller {
 
     /**
+     * @Route("/game", name="game")
+     */
+    public function gameAction(Request $request) {
+        //$oRepoGrid = $this->getDoctrine()->getRepository('AppBundle:Grid');
+        //$aGrid = $oGrid->findAll();
+        //dump($aGrid);
+        $aTab1 = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9],
+        ];
+        dump($aTab1);
+        //require_once '/path/to/vendor/autoload.php' ;
+        // replace this example code with whatever you need
+        return $this->render('@App/Default/game.html.twig', [
+                    'grid' => $aTab1,
+        ]);
+    }
+
+    /**
      * @Route("/", name="homepage")
      */
     public function indexAction(AuthenticationUtils $authenticationUtils) {

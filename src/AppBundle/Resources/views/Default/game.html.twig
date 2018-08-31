@@ -1,0 +1,62 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"></div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <header>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{ asset('bundles/app/images/logopc5.jpg') }}" alt="jeu morpion" title="morpion" />
+            </div>
+            <div class="col-md-8">
+                <h2>Fight-The-Crabs-Game</h2>
+            </div>
+
+            <div class="col-md-2">
+                <img src="{{ asset('bundles/app/images/jeu_morpion.jpg') }}" alt="jeu morpion" title="morpion" />
+            </div>
+        </div>
+    </header>
+    {{ dump(grid) }}
+    <h1>Members</h1>
+    <ul>
+        {% for tab in grid %}
+            <li> {{ grid.table | e }} </li>
+            {% endfor %}
+    </ul>
+
+    {% for i in 0..9 %}
+        *  {{ i }}
+    {% endfor %}
+
+    {% for tab in grid %}
+        {{ loop .game }}  -  {{ grid.table }}
+    {% endfor %}
+
+    <div align="center">
+        <table border="5">
+            <tr>
+                <td>{{(grid)}}</td>
+                <td>{{ dump(grid) }}</td>
+                <td>{{ dump(grid) }}</td>
+            </tr>
+            <tr>
+                <td>{{ dump(grid) }}</td>
+                <td>{{ dump(grid) }}</td>
+                <td>{{ dump(grid) }}</td>
+            </tr>
+            <tr>
+                <td>{{ dump(grid) }}</td>
+                <td>{{ dump(grid) }}</td>
+                <td>{{ dump(grid) }}</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}
+
