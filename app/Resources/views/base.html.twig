@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+
         <!-- JQuery -->
         <script src='script1.js'></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -15,6 +16,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
         <title>{% block title %}Welcome in this Universe!{% endblock %}</title>
+
         {% block stylesheets %}
             <style>
                 h1 {
@@ -94,9 +96,13 @@
     </head>
     <body>
         <header>
-            <a href="{{ path('homepage') }}">accueil</a>
-            <a href="{{ path('game') }}">game</a>
-            <a href="{{ path('inscription') }}">inscription</a>
+            <a href="{{ path('homepage') }}">Accueil</a>
+            <a href="{{ path('inscription') }}">Inscription</a>
+            <a href="{{ path('game') }}">Game</a>
+
+            {% if app.user %}
+                <a href="{{ path('deconnexion') }}">Déconnexion</a>
+            {% endif %}
         </header>
 
         <main>

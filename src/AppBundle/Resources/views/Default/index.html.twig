@@ -45,5 +45,8 @@
             </tr>
         </table>
     </div>
-    <a href="{{ path('inscription') }}"><h2>ENTRER</h2></a>
+
+    {% if not app.user %}
+        <h2><a href="{{ path('connexion') }}">ENTRER</a></h2>
+    {% endif %}
 {% endblock %}
