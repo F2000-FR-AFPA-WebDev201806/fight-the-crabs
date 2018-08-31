@@ -34,7 +34,16 @@ class DefaultController extends Controller {
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(AuthenticationUtils $authenticationUtils) {
+    public function indexAction() {
+        // replace this example code with whatever you need
+        return $this->render('@App/Default/index.html.twig', [
+        ]);
+    }
+
+    /**
+     * @Route("/connexion", name="connexion")
+     */
+    public function connexionAction(AuthenticationUtils $authenticationUtils) {
         $error = $authenticationUtils->getLastAuthenticationError();
         dump($error);
 
@@ -46,7 +55,7 @@ class DefaultController extends Controller {
                 ->getForm();
 
         // replace this example code with whatever you need
-        return $this->render('@App/Default/index.html.twig', [
+        return $this->render('@App/Default/connexion.html.twig', [
                     'form' => $oForm->createView(),
         ]);
     }

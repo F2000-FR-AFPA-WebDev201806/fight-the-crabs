@@ -29,8 +29,8 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             form_login:
-                login_path: homepage
-                check_path: homepage
+                login_path: connexion
+                check_path: connexion
                 username_parameter: form[login]
                 password_parameter: form[password]
 

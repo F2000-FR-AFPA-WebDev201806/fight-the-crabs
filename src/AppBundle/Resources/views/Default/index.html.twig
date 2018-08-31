@@ -29,34 +29,27 @@
     </div>
     <br />
 
-    {% if app.user %}
-        <div>
-            <table border="10">
-                <tr>
-                    <td>image tab[1]</td>
-                    <td>image tab[2]</td>
-                    <td>image tab[3]</td>
-                </tr>
-                <tr>
-                    <td>image tab[4]</td>
-                    <td>image tab[5]</td>
-                    <td>image tab[6]</td>
-                </tr>
-                <tr>
-                    <td>image tab[7]</td>
-                    <td>image tab[8]</td>
-                    <td>image tab[9]</td>
-                </tr>
-            </table>
-        </div>
-    {% else %}
-        <div id="container">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <input type="submit">
-            {{ form_end(form) }}
-        </div>
-    {% endif %}
+    <div>
+        <table border="10">
+            <tr>
+                <td>image tab[1]</td>
+                <td>image tab[2]</td>
+                <td>image tab[3]</td>
+            </tr>
+            <tr>
+                <td>image tab[4]</td>
+                <td>image tab[5]</td>
+                <td>image tab[6]</td>
+            </tr>
+            <tr>
+                <td>image tab[7]</td>
+                <td>image tab[8]</td>
+                <td>image tab[9]</td>
+            </tr>
+        </table>
+    </div>
 
-    <h2>ENTRER</h2>
+    {% if not app.user %}
+        <h2><a href="{{ path('connexion') }}">ENTRER</a></h2>
+    {% endif %}
 {% endblock %}
