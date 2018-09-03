@@ -14,7 +14,7 @@ class DefaultController extends Controller {
     /**
      * @Route("/game", name="game")
      */
-    public function gameAction() {
+    public function gameAction(Request $request) {
         //$oRepoGrid = $this->getDoctrine()->getRepository('AppBundle:Grid');
         //$aGrid = $oGrid->findAll();
         //dump($aGrid);
