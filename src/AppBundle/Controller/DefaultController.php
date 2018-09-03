@@ -15,6 +15,7 @@ class DefaultController extends Controller {
      * @Route("/game", name="game")
      */
     public function gameAction(Request $request) {
+<<<<<<< HEAD
         //$oRepoGrid = $this->getDoctrine()->getRepository('AppBundle:Grid');
         //$aGrid = $oGrid->findAll();
         //dump($aGrid);
@@ -30,13 +31,43 @@ class DefaultController extends Controller {
 
         $request->getSession()->set('grid', $aGrid);
 
+=======
+        if ($request->getSession()->has('grid')) {
+            $aGrid = $request->getSession()->get('grid');
+            $iCurrentPlayer = $request->getSession()->get('current_player');
+        } else {
+            $aGrid = [
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', ''],
+            ];
+            $iCurrentPlayer = 1;
 
-        //require_once '/path/to/vendor/autoload.php' ;
-        // replace this example code with whatever you need
+            // Enregistrement en session
+            $request->getSession()->set('grid', $aGrid);
+            $request->getSession()->set('current_player', $iCurrentPlayer);
+        }
+>>>>>>> 5c16a4c9fa78a306d0a0d2cd5dc42de85dfa43cc
+
         return $this->render('@App/Default/game.html.twig', [
                     'grid' => $aGrid,
                     'player' => $iCurrentPlayer,
         ]);
+    }
+
+    /**
+     * @Route("/game/play/{x}/{y}", name="game_play")
+     */
+    public function playAction(Request $request, $x, $y) {
+        // Modifier la case (x, y)
+        // Récupérer le jeu en session
+        // Est-ce que la case vide ?
+        // Mettre le pion correspondant au joueur actuelle
+        // Passer au joueur suivant
+        // Renregistrer le jeu dans la session
+
+
+        return new \Symfony\Component\HttpFoundation\JsonResponse([$x, $y]);
     }
 
     /**
