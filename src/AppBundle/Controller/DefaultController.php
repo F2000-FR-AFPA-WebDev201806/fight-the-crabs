@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use AppBundle\Model\Board;
 
 class DefaultController extends Controller {
 
@@ -24,7 +25,7 @@ class DefaultController extends Controller {
                 ['', '', ''],
                 ['', '', ''],
             ];
-            $iCurrentPlayer = 1;
+            $iCurrentPlayer = Board::PLAYER_CROSS;
 
             // Enregistrement en session
             $request->getSession()->set('grid', $aGrid);
@@ -43,13 +44,38 @@ class DefaultController extends Controller {
     public function playAction(Request $request, $x, $y) {
         // Modifier la case (x, y)
         // Récupérer le jeu en session
-        // Est-ce que la case vide ?
-        // Mettre le pion correspondant au joueur actuelle
-        // Passer au joueur suivant
-        // Renregistrer le jeu dans la session
+        if ($request->getSession()->has('grid')) {
+            $aGrid = $request->getSession()->get('grid');
+            $iCurrentPlayer = $request->getSession()->get('current_player');
 
+            // Est-ce que la case vide ?
+            if (empty($aGrid[$y][$x])) {
+                // Mettre le pion correspondant au joueur actuelle
+                // Passer au joueur suivant
+                switch ($iCurrentPlayer) {
+                    case Board::PLAYER_CROSS:
+                        $aGrid[$y][$x] = 'fas fa-times';
+                        $iCurrentPlayer = Board::PLAYER_CIRCLE;
+                        break;
 
-        return new \Symfony\Component\HttpFoundation\JsonResponse([$x, $y]);
+                    case Board::PLAYER_CIRCLE:
+                        $aGrid[$y][$x] = 'fas fa-circle';
+                        $iCurrentPlayer = Board::PLAYER_CROSS;
+                        break;
+                }
+
+                // Enregistrement en session
+                $request->getSession()->set('grid', $aGrid);
+                $request->getSession()->set('current_player', $iCurrentPlayer);
+
+                return $this->render('@App/Default/board.html.twig', [
+                            'grid' => $aGrid,
+                            'player' => $iCurrentPlayer,
+                ]);
+            }
+        }
+
+        return new Response();
     }
 
     /**
