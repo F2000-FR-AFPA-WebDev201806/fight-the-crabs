@@ -18,16 +18,24 @@ class DefaultController extends Controller {
         //$oRepoGrid = $this->getDoctrine()->getRepository('AppBundle:Grid');
         //$aGrid = $oGrid->findAll();
         //dump($aGrid);
-        $aTab1 = [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9],
+        $aGrid = [
+            ['', 'fas fa-times', ''],
+            ['', '', ''],
+            ['', 'far fa-circle', ''],
         ];
-        dump($aTab1);
+        $iCurrentPlayer = 1;
+        dump($aGrid);
+
+        //Enregistrement en session
+
+        $request->getSession()->set('grid', $aGrid);
+
+
         //require_once '/path/to/vendor/autoload.php' ;
         // replace this example code with whatever you need
         return $this->render('@App/Default/game.html.twig', [
-                    'grid' => $aTab1,
+                    'grid' => $aGrid,
+                    'player' => $iCurrentPlayer,
         ]);
     }
 

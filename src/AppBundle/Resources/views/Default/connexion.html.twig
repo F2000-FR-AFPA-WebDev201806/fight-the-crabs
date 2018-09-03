@@ -1,4 +1,3 @@
-{# empty Twig template #}
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -7,7 +6,9 @@
         <div class="col-md-8"></div>
         <div class="col-md-2"></div>
     </div>
-
+    <nav>
+        <h1>BIENVENUE CHER GAMER</h1>
+    </nav>
     <header>
         <div class="row">
             <div class="col-md-2">
@@ -16,28 +17,21 @@
             <div class="col-md-8">
                 <h2>Fight-The-Crabs-Game</h2>
             </div>
-
             <div class="col-md-2">
                 <img src="{{ asset('bundles/app/images/jeu_morpion.jpg') }}" alt="jeu morpion" title="morpion" />
+
             </div>
         </div>
     </header>
 
-    <h1>Grille</h1>
-    {{ dump(grid) }}
+    {{ form_start(form) }}
 
-    <div align="center">
-        <table border="5">
-            {% for row in grid %}
-                <tr>
-                    {% for cell in row %}
-                        <td>
-                            <span class="{{ cell }} fa-7x"></span>
-                        </td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
+    {{ form_widget(form) }}
+    <input type="submit">
+
+    {{ form_end(form) }}
+
+    {% if not app.user %}
+        <h2><a href="{{ path('connexion') }}">ENTRER</a></h2>
+    {% endif %}
 {% endblock %}
-

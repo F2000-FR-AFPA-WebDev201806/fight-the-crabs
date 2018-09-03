@@ -18,91 +18,16 @@
         <title>{% block title %}Welcome in this Universe!{% endblock %}</title>
 
         {% block stylesheets %}
-            <style>
-                h1 {
-                    font-size: 58px;
-                    color: black;
-                    font-family: Snap ITC,Arial Black, Arial;
-                    text-align: center;
-                }
-                h2 {
-                    font-family: snap ITC,Old English Text MT;
-                    font-size: 34px;
-                    color: red;
-                    text-align: center;
-                }
-                h3 {
-                    font-size: 40px;
-                    color: black;
-                    font-family: Arial Black, Arial;
-                    text-align: center;
-                }
-                body {
-                    background-color: aquamarine;
-                    margin-left: 150px;
-                    margin-right: 150px;
-                }
-                img {
-                    height: 100px;
-                    width: 100px;
-                }
-                .dyv2 {
-                    background-color: azure;
-                    alignment-adjust: middle;
-                    text-align: center;
+            <!-- On lie notre fichier HTML à notre fichier CSS -->
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/global.css') }}" />
 
-
-                }
-                td{
-                    height: 160px;
-                    width: 160px;
-                    alignment-adjust: middle;
-                }
-                table {
-                    width: 500px;
-                    margin: auto;
-                    alignement-adjust: middle;
-                    color: blue;
-                    background-color: cyan;
-
-                }
-                nav {
-                    border-radius :30px 30px 1px 1px;
-                    background-color: azure;
-                }
-                header {
-                    background-color: azure;
-                }
-                footer {
-                    border-radius : 1px 1px 30px 30px;
-                    background-color: gold;
-
-                }
-                .far {
-                    width: 125px;
-                    margin: auto;
-                    alignment-adjust: middle;
-                }
-                .fas {
-                    width: 125px;
-                    margin: auto;
-                    alignment-adjust: middle;
-                }
-
-            </style>
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <header>
-            <a href="{{ path('homepage') }}">Accueil</a>
-            <a href="{{ path('inscription') }}">Inscription</a>
-            <a href="{{ path('game') }}">Game</a>
-
-            {% if app.user %}
-                <a href="{{ path('deconnexion') }}">Déconnexion</a>
-            {% endif %}
+            {% include '@App/Default/header.html.twig' %}
         </header>
 
         <main>
