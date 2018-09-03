@@ -23,16 +23,14 @@
         </div>
     </header>
 
-    <div>
-        <img src="{{ asset('bundles/app/images/gamer.jpg') }}" alt="gamer" title="game" />
-        <br>
-    </div>
-    <br />
+    {{ form_start(form) }}
 
-    <div id="container">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit">
-        {{ form_end(form) }}
-    </div>
+    {{ form_widget(form) }}
+    <input type="submit">
+
+    {{ form_end(form) }}
+
+    {% if not app.user %}
+        <h2><a href="{{ path('connexion') }}">ENTRER</a></h2>
+    {% endif %}
 {% endblock %}

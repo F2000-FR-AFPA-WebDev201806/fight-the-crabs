@@ -14,16 +14,21 @@ class DefaultController extends Controller {
     /**
      * @Route("/game", name="game")
      */
-    public function gameAction() {
-        $aTab1 = [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9],
+    public function gameAction(Request $request) {
+        $aGrid = [
+            ['', 'fas fa-times', ''],
+            ['', '', ''],
+            ['', 'far fa-circle', ''],
         ];
-        dump($aTab1);
+        $iCurrentPlayer = 1;
+
+        // Enregistrement en session
+        $request->getSession()->set('grid', $aGrid);
+        $request->getSession()->set('current_player', $iCurrentPlayer);
 
         return $this->render('@App/Default/game.html.twig', [
-                    'grid' => $aTab1,
+                    'grid' => $aGrid,
+                    'player' => $iCurrentPlayer,
         ]);
     }
 
