@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8"></div>
+        <div class="col-md-2"></div>
+    </div>
+    <nav>
+        <h1>BIENVENUE CHER GAMER</h1>
+    </nav>
+    <header>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{ asset('bundles/app/images/logopc5.jpg') }}" alt="jeu morpion" title="morpion" />
+            </div>
+            <div class="col-md-8">
+                <h2>Fight-The-Crabs-Game</h2>
+            </div>
+            <div class="col-md-2">
+                <img src="{{ asset('bundles/app/images/jeu_morpion.jpg') }}" alt="jeu morpion" title="morpion" />
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <img src="{{ asset('bundles/app/images/gamer.jpg') }}" alt="gamer" title="game" />
+        <br>
+    </div>
+    <br />
+
+    <div id="container">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit">
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
