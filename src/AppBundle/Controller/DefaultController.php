@@ -15,20 +15,26 @@ class DefaultController extends Controller {
      * @Route("/game", name="game")
      */
     public function gameAction() {
-        //$oRepoGrid = $this->getDoctrine()->getRepository('AppBundle:Grid');
-        //$aGrid = $oGrid->findAll();
-        //dump($aGrid);
         $aTab1 = [
             [1, 2, 3],
             [4, 5, 6],
             [7, 8, 9],
         ];
         dump($aTab1);
-        //require_once '/path/to/vendor/autoload.php' ;
-        // replace this example code with whatever you need
+
         return $this->render('@App/Default/game.html.twig', [
                     'grid' => $aTab1,
         ]);
+    }
+
+    /**
+     * @Route("/game/play/{x}/{y}", name="game_play")
+     */
+    public function playAction($x, $y) {
+        // Modifier la case (x, y)
+
+
+        return new \Symfony\Component\HttpFoundation\JsonResponse([$x, $y]);
     }
 
     /**
