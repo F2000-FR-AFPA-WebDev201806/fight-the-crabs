@@ -82,7 +82,6 @@ class DefaultController extends Controller {
      * @Route("/", name="homepage")
      */
     public function indexAction() {
-        // replace this example code with whatever you need
         return $this->render('@App/Default/index.html.twig', [
         ]);
     }
@@ -101,7 +100,6 @@ class DefaultController extends Controller {
                 ->add('password', PasswordType::class)
                 ->getForm();
 
-        // replace this example code with whatever you need
         return $this->render('@App/Default/connexion.html.twig', [
                     'form' => $oForm->createView(),
         ]);
