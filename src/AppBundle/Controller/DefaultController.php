@@ -15,16 +15,21 @@ class DefaultController extends Controller {
      * @Route("/game", name="game")
      */
     public function gameAction(Request $request) {
-        $aGrid = [
-            ['', 'fas fa-times', ''],
-            ['', '', ''],
-            ['', 'far fa-circle', ''],
-        ];
-        $iCurrentPlayer = 1;
+        if ($request->getSession()->has('grid')) {
+            $aGrid = $request->getSession()->get('grid');
+            $iCurrentPlayer = $request->getSession()->get('current_player');
+        } else {
+            $aGrid = [
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', ''],
+            ];
+            $iCurrentPlayer = 1;
 
-        // Enregistrement en session
-        $request->getSession()->set('grid', $aGrid);
-        $request->getSession()->set('current_player', $iCurrentPlayer);
+            // Enregistrement en session
+            $request->getSession()->set('grid', $aGrid);
+            $request->getSession()->set('current_player', $iCurrentPlayer);
+        }
 
         return $this->render('@App/Default/game.html.twig', [
                     'grid' => $aGrid,
@@ -35,8 +40,13 @@ class DefaultController extends Controller {
     /**
      * @Route("/game/play/{x}/{y}", name="game_play")
      */
-    public function playAction($x, $y) {
+    public function playAction(Request $request, $x, $y) {
         // Modifier la case (x, y)
+        // Récupérer le jeu en session
+        // Est-ce que la case vide ?
+        // Mettre le pion correspondant au joueur actuelle
+        // Passer au joueur suivant
+        // Renregistrer le jeu dans la session
 
 
         return new \Symfony\Component\HttpFoundation\JsonResponse([$x, $y]);

@@ -29,38 +29,22 @@
     <div>
         <table border="10">
             <tr>
-                <td data-x="0" data-y="0"><span class="fas fa-times fa-7x"></span></td>
-                <td data-x="1" data-y="0"><span class="fas fa-times fa-7x"></span></td>
-                <td data-x="2" data-y="0"><span class="fas fa-times fa-7x"></span></td>
+                <td><span class="fas fa-times fa-7x"></span></td>
+                <td><span class="fas fa-times fa-7x"></span></td>
+                <td><span class="fas fa-times fa-7x"></span></td>
             </tr>
             <tr>
-                <td data-x="0" data-y="1"><span class="far fa-circle fa-7x"></span></td>
-                <td data-x="1" data-y="1"><span class="fas fa-times fa-7x"></span></td>
-                <td data-x="2" data-y="1"><span class="far fa-circle fa-7x"></span></td>
+                <td><span class="far fa-circle fa-7x"></span></td>
+                <td><span class="fas fa-times fa-7x"></span></td>
+                <td><span class="far fa-circle fa-7x"></span></td>
             </tr>
             <tr>
-                <td data-x="0" data-y="2"><span class="far fa-circle fa-7x"></span></td>
-                <td data-x="1" data-y="2"><span class="fas fa-times fa-7x"></span></td>
-                <td data-x="2" data-y="2"><span class="far fa-circle fa-7x"></span></td>
+                <td><span class="far fa-circle fa-7x"></span></td>
+                <td><span class="fas fa-times fa-7x"></span></td>
+                <td><span class="far fa-circle fa-7x"></span></td>
             </tr>
         </table>
     </div>
-
-    <script>
-        $(document).ready(function () {
-            console.log('ready');
-            $('td').on("click", function () {
-                console.log('click ' + $(this).data('x') + ' ' + $(this).data('y'));
-                // appel ajax sur /game/play/{x}/{y}
-
-                $.ajax({
-                    url: '/fight-the-crabs-game/web/app_dev.php/game/play/' + $(this).data('x') + '/' + $(this).data('y'),
-                    type: 'GET'
-                });
-            });
-        });
-    </script>
-
 
     {% if not app.user %}
         <h2><a href="{{ path('connexion') }}">ENTRER</a></h2>
