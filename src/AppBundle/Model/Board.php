@@ -38,7 +38,7 @@ class Board {
                     break;
 
                 case Board::PLAYER_CIRCLE:
-                    $this->grid[$y][$x] = 'fas fa-circle';
+                    $this->grid[$y][$x] = 'far fa-circle';
                     break;
             }
 
