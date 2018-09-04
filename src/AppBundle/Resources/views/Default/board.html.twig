@@ -1,4 +1,4 @@
-<strong>Joueur {{ board.currentPlayer }} à vous de jouer</strong><br />
+<strong>Joueur  {{ board.currentPlayer }} à vous de jouer</strong><br />
 <br />
 <br />
 <table border="5">
@@ -15,3 +15,32 @@
         </tr>
     {% endfor %}
 </table>
+<br />
+<button type="button" class="btn btn-primary">Quitter la partie</button>
+<br />
+<br />
+
+{% if board.isWin %}
+    <div id="popupWin" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">VICTOIRE !</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>Bravo joueur {{ board.currentPlayer }}, vous avez gagné !!</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Rejouer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#popupWin').modal();
+        });
+    </script>
+{% endif %}
