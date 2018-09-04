@@ -60,6 +60,15 @@ class DefaultController extends Controller {
     }
 
     /**
+     * @Route("/game/reset", name="game_reset")
+     */
+    public function resetAction(Request $request) {
+        $request->getSession()->remove('board');
+
+        return $this->redirectToRoute('game');
+    }
+
+    /**
      * @Route("/", name="homepage")
      */
     public function indexAction() {
