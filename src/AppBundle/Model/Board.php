@@ -67,7 +67,7 @@ class Board {
      * Est-ce la partie est finie?
      */
     public function isWin() {
-
+        return true;
     }
 
     public function getGrid() {

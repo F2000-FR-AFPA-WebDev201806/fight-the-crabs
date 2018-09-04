@@ -43,7 +43,9 @@ class DefaultController extends Controller {
             // Est-ce que la case vide ?
             //Appel fonction nextPlayer
             if ($oBoard->play($x, $y)) {
-                $oBoard->nextPlayer();
+                if (!$oBoard->isWin()) {
+                    $oBoard->nextPlayer();
+                }
 
                 // Enregistrement en session
                 $request->getSession()->set('board', $oBoard);
