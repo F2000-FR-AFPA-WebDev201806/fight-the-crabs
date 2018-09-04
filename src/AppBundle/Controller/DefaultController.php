@@ -44,33 +44,19 @@ class DefaultController extends Controller {
     public function playAction(Request $request, $x, $y) {
         // Modifier la case (x, y)
         // Récupérer le jeu en session
-        if ($request->getSession()->has('grid')) {
-            $aGrid = $request->getSession()->get('grid');
-            $iCurrentPlayer = $request->getSession()->get('current_player');
+        if ($request->getSession()->has('board')) {
+            $oBoard = $request->getSession()->get('board');
 
             // Est-ce que la case vide ?
-            if (empty($aGrid[$y][$x])) {
-                // Mettre le pion correspondant au joueur actuelle
-                // Passer au joueur suivant
-                switch ($iCurrentPlayer) {
-                    case Board::PLAYER_CROSS:
-                        $aGrid[$y][$x] = 'fas fa-times';
-                        $iCurrentPlayer = Board::PLAYER_CIRCLE;
-                        break;
-
-                    case Board::PLAYER_CIRCLE:
-                        $aGrid[$y][$x] = 'fas fa-circle';
-                        $iCurrentPlayer = Board::PLAYER_CROSS;
-                        break;
-                }
+            //Appel fonction nextPlayer
+            if ($oBoard->play($x, $y)) {
+                $oBoard->nextPlayer();
 
                 // Enregistrement en session
-                $request->getSession()->set('grid', $aGrid);
-                $request->getSession()->set('current_player', $iCurrentPlayer);
+                $request->getSession()->set('board', $oBoard);
 
                 return $this->render('@App/Default/board.html.twig', [
-                            'grid' => $aGrid,
-                            'player' => $iCurrentPlayer,
+                            'board' => $oBoard,
                 ]);
             }
         }
