@@ -68,37 +68,39 @@ class Board {
      */
     public function isWin() {
         // colonne 1
-        if ($this->grid[0][0] == $this->grid[0][1] && $this->grid[0][1] == $this->grid[0][2]) {
+        if (!empty($this->grid[0][0]) && $this->grid[0][0] == $this->grid[0][1] && $this->grid[0][1] == $this->grid[0][2]) {
             return true;
         }
         //Colonne 2
-        if ($this->grid[1][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[1][2]) {
+        if (!empty($this->grid[1][0]) && $this->grid[1][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[1][2]) {
             return true;
         }
         //Colonne 3
-        if ($this->grid[2][0] == $this->grid[2][1] && $this->grid[2][1] == $this->grid[2][2]) {
+        if (!empty($this->grid[2][0]) && $this->grid[2][0] == $this->grid[2][1] && $this->grid[2][1] == $this->grid[2][2]) {
             return true;
         }
         //Ligne 1
-        if ($this->grid[0][0] == $this->grid[1][0] && $this->grid[1][0] == $this->grid[2][0]) {
+        if (!empty($this->grid[0][0]) && $this->grid[0][0] == $this->grid[1][0] && $this->grid[1][0] == $this->grid[2][0]) {
             return true;
         }
         //Ligne 2
-        if ($this->grid[0][1] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][1]) {
+        if (!empty($this->grid[0][1]) && $this->grid[0][1] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][1]) {
             return true;
         }
         //Ligne 3
-        if ($this->grid[0][2] == $this->grid[1][2] && $this->grid[1][2] == $this->grid[2][2]) {
+        if (!empty($this->grid[0][2]) && $this->grid[0][2] == $this->grid[1][2] && $this->grid[1][2] == $this->grid[2][2]) {
             return true;
         }
         //Diagonnale 1
-        if ($this->grid[0][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][2]) {
+        if (!empty($this->grid[0][0]) && $this->grid[0][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][2]) {
             return true;
         }
         //diagonnale 2
-        if ($this->grid[0][2] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][0]) {
+        if (!empty($this->grid[0][2]) && $this->grid[0][2] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][0]) {
             return true;
         }
+
+        return false;
     }
 
     public function isTie() {
