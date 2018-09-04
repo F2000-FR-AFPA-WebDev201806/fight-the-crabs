@@ -1,7 +1,9 @@
 <a href="{{ path('homepage') }}">Accueil</a>
-<a href="{{ path('inscription') }}">Inscription</a>
-<a href="{{ path('game') }}">Game</a>
 
 {% if app.user %}
+    <a href="{{ path('game') }}">Game</a>
     <a href="{{ path('deconnexion') }}">Déconnexion</a>
+{% else %}
+    <a href="{{ path('connexion') }}">Connexion</a>
+    <a href="{{ path('inscription') }}">Inscription</a>
 {% endif %}

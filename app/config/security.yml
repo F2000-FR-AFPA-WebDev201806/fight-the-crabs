@@ -33,6 +33,7 @@ security:
                 check_path: connexion
                 username_parameter: form[login]
                 password_parameter: form[password]
+                default_target_path: game
 
             logout:
                 path: deconnexion
