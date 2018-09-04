@@ -67,7 +67,32 @@ class Board {
      * Est-ce la partie est finie?
      */
     public function isWin() {
+        // colonne 1
 
+        if ($this->grid[0][0] == $this->grid[0][1] && $this->grid[0][1] == $this->grid[0][2]) {
+            return true;
+        }
+        if ($this->grid[1][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[1][2]) {
+            return true;
+        }
+        if ($this->grid[2][0] == $this->grid[2][1] && $this->grid[2][1] == $this->grid[2][2]) {
+            return true;
+        }
+        if ($this->grid[0][0] == $this->grid[1][0] && $this->grid[1][0] == $this->grid[2][0]) {
+            return true;
+        }
+        if ($this->grid[0][1] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][1]) {
+            return true;
+        }
+        if ($this->grid[0][2] == $this->grid[1][2] && $this->grid[1][2] == $this->grid[2][2]) {
+            return true;
+        }
+        if ($this->grid[0][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][2]) {
+            return true;
+        }
+        if ($this->grid[0][2] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][0]) {
+            return true;
+        }
     }
 
     public function getGrid() {
