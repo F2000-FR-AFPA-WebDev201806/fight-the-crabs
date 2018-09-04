@@ -16,25 +16,18 @@ class DefaultController extends Controller {
      * @Route("/game", name="game")
      */
     public function gameAction(Request $request) {
-        if ($request->getSession()->has('grid')) {
-            $aGrid = $request->getSession()->get('grid');
-            $iCurrentPlayer = $request->getSession()->get('current_player');
+        // Vérification de la session
+        if ($request->getSession()->has('board')) {
+            // Lecture de la session
+            $oBoard = $request->getSession()->get('board');
         } else {
-            $aGrid = [
-                ['', '', ''],
-                ['', '', ''],
-                ['', '', ''],
-            ];
-            $iCurrentPlayer = Board::PLAYER_CROSS;
-
             // Enregistrement en session
-            $request->getSession()->set('grid', $aGrid);
-            $request->getSession()->set('current_player', $iCurrentPlayer);
+            $oBoard = new Board;
+            $request->getSession()->set('board', $oBoard);
         }
 
         return $this->render('@App/Default/game.html.twig', [
-                    'grid' => $aGrid,
-                    'player' => $iCurrentPlayer,
+                    'board' => $oBoard,
         ]);
     }
 
