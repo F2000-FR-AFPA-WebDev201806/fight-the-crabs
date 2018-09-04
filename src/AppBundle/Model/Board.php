@@ -68,31 +68,51 @@ class Board {
      */
     public function isWin() {
         // colonne 1
-
         if ($this->grid[0][0] == $this->grid[0][1] && $this->grid[0][1] == $this->grid[0][2]) {
             return true;
         }
+        //Colonne 2
         if ($this->grid[1][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[1][2]) {
             return true;
         }
+        //Colonne 3
         if ($this->grid[2][0] == $this->grid[2][1] && $this->grid[2][1] == $this->grid[2][2]) {
             return true;
         }
+        //Ligne 1
         if ($this->grid[0][0] == $this->grid[1][0] && $this->grid[1][0] == $this->grid[2][0]) {
             return true;
         }
+        //Ligne 2
         if ($this->grid[0][1] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][1]) {
             return true;
         }
+        //Ligne 3
         if ($this->grid[0][2] == $this->grid[1][2] && $this->grid[1][2] == $this->grid[2][2]) {
             return true;
         }
+        //Diagonnale 1
         if ($this->grid[0][0] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][2]) {
             return true;
         }
+        //diagonnale 2
         if ($this->grid[0][2] == $this->grid[1][1] && $this->grid[1][1] == $this->grid[2][0]) {
             return true;
         }
+    }
+
+    public function isTie() {
+        // On retourne FAUX si on tombe sur une case vide (partie non finie)
+        foreach ($this->grid as $aRow) {
+            foreach ($aRow as $cell) {
+                if ($cell === '') {
+                    return false;
+                }
+            }
+        }
+
+        // Si on est là, c'est que toutes les cases sont remplies
+        return true;
     }
 
     public function getGrid() {
