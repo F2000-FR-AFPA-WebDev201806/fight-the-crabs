@@ -1,9 +1,27 @@
-<a href="{{ path('homepage') }}">Accueil</a>
+<div class="row">
+    <div class="col-8">
+        <a href="{{ path('homepage') }}">
+            <button type="button" class="btn btn-outline-primary">Accueil</button>
+        </a>
 
-{% if app.user %}
-    <a href="{{ path('game') }}">Game</a>
-    <a href="{{ path('deconnexion') }}">Déconnexion</a>
-{% else %}
-    <a href="{{ path('connexion') }}">Connexion</a>
-    <a href="{{ path('inscription') }}">Inscription</a>
-{% endif %}
+        {% if app.user %}
+            <a href="{{ path('game') }}">
+                <button type="button" class="btn btn-outline-warning">Game</button>
+            </a>
+        {% else %}
+            <a href="{{ path('login') }}">
+                <button type="button" class="btn btn-outline-success">Connexion</button>
+            </a>
+            <a href="{{ path('inscription') }}">
+                <button type="button" class="btn btn-outline-danger">Inscription</button>
+            </a>
+        {% endif %}
+    </div>
+    <div class="col-4 text-right">
+        {% if app.user %}
+            <a href="{{ path('deconnexion') }}">
+                <button type="button" class="btn btn-outline-dark">Déconnexion</button>
+            </a>
+        {% endif %}
+    </div>
+</div>

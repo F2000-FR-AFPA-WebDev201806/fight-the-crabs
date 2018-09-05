@@ -9,6 +9,11 @@ and open the template in the editor.
 */
 
 /* On défini les styles globaux à notre site ; généralement la police de caractère */
+header {
+}
+header button {
+    margin: 20px;
+}
 
 h1 {
     font-size: 58px;
@@ -58,10 +63,10 @@ table {
 }
 nav {
     border-radius :30px 30px 1px 1px;
-    background-color: azure;
+    background-color: white;
 }
 header {
-    background-color: azure;
+    background-color: white;
 }
 footer {
     border-radius : 1px 1px 30px 30px;
