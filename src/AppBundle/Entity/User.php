@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user")
+ * @ORM\Table(name="ftc_user")
  */
 class User implements UserInterface {
 
@@ -93,7 +93,7 @@ class User implements UserInterface {
 
     }
 
-    public function getUsername(): string {
+    public function getUsername() {
         return $this->getLogin();
     }
 
